@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wuana Wuary</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Chosen Palette: Gray, Blue & White -->
+    <!-- Application Structure Plan: La aplicación está diseñada en un modelo de una sola página con una estructura de cuadrícula (grid) para escritorio y un layout de desplazamiento horizontal (flexbox con overflow) para móviles. La arquitectura principal consiste en tres secciones: un aside izquierdo para el menú de navegación, un main central para el contenido principal, y un aside derecho para información complementaria. Se eligió esta estructura para proporcionar una experiencia de usuario optimizada en ambos tipos de dispositivos. En móvil, el contenido principal domina la pantalla, y los menús laterales están ocultos pero accesibles con un simple deslizamiento. En escritorio, los tres paneles son visibles simultáneamente para una máxima productividad, y la cuadrícula asegura que los tamaños se mantengan proporcionales y legibles. -->
+    <!-- Visualization & Content Choices: 
+        - Layout General -> Meta: Organizar -> Presentación: Contenedor con CSS Grid y Flexbox (Tailwind) -> Interacción: Desplazamiento horizontal para móviles, escalado automático con el zoom en escritorio -> Justificación: Permite un control preciso sobre la distribución del espacio en diferentes dispositivos, solucionando los problemas de visualización del usuario.
+        - Se usan placeholders de contenido para demostrar el layout, ya que el objetivo es la estructura.
+        - No se utilizan gráficos ni tablas interactivas en esta versión, ya que el enfoque está en la arquitectura de la página. -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            font-family: sans-serif;
+            background-color: #f3f4f6;
+        }
+
+        .scroll-container {
+            width: 100%;
+            height: 100%;
+            overflow-x: auto;
+            overflow-y: hidden;
+            -webkit-overflow-scrolling: touch;
+            scroll-snap-type: x mandatory;
+        }
+
+        .scroll-item {
+            scroll-snap-align: center;
+        }
+
+
+      /*    body {
+      background: linear-gradient(135deg, #D53BFFD1 0%, ##FFFFFF 100%);
+      height: 1280px;
+    min-height: 1200px;
+  font-family: Arial, sans-serif;
+      min-height: ;
+      margin: 10px 10px 10px 10px;
+    max-width:99vh;
+      width: 1080px;
+      padding: 5px 10px 10px 10px;
+      /*escale:0.9;*/
+    }
+    .navbar {
+      margin: 0;
+      top: 0;
+      font-size: 1.5em;
+    }
+    
+    .navbar,
+    .footer {
+      background: linear-gradient(90deg, #FFF 0%, #FFF 100%);
+      color: #000000;
+      box-shadow: 0 2px 8px rgba(106, 223, 153, 0.18);
+      border-radius: 0 0 14px 14px;
+     padding: 12px 24px;      display: flex;    
+     align-items: center;
+    justify-content: space-between;
+      max-height: 50px;
+      position: fixed;
+      max-width: 9ñ;
+      left: 0;
+      right: 0;
+      z-index: 10;
+    }
+
+    .footer {
+      position: fixed;
+      bottom: 0;
+      font-size: 0.95em;
+    }
+
+   .container {
+      padding: 80px 16px 60px 16px;
+      max-width: 120%;
+      margin: 0 auto;
+    }
+
+    .menu-btn,
+    .logout-btn,
+    .open-sidebar-btn {
+      background: linear-gradient(90deg, #873AEA 0%, #7AFCFF 100%);
+      color: #232323;
+      border: none;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(245, 72, 72, 1);
+      padding: 10px 14px;
+      font-weight: bold;
+      cursor: pointer;
+      margin: 4px 4px;
+      font-size: .5em;
+      transition: background 0.2s, box-shadow 0.2s;
+    }
+
+    .menu-btn:hover,
+    .logout-btn:hover,
+    .open-sidebar-btn:hover {
+      background: linear-gradient(90deg, #FFD2007D 0%, #F7971E 100%);
+      box-shadow: 4px 4px 12px rgba(60, 60, 60, 0.22);
+    }
+
+    .menu-btn.active {
+      background: #4EBC76A6;
+    }
+
+    .card {
+      background: linear-gradient(120deg, #29DB7C99 0%, #06A5B8B3 100%);
+      border-radius: 16px;
+      box-shadow: 0 8px 24px rgba(75, 6, 79, 0.45), 0 1.5px 6px rgba(215, 100, 197, 0.77);
+      border: none;
+      margin: 16px 0;
+      padding: 20px 14px;
+      display: flex;
+      max-width:80%;
+      width:80%;
+      flex-direction: column;
+      
+      gap: 8px;
+      transition: transform 0.2s, box-shadow 0.2s;
+      height: 100vh;
+      max-height:100%;
+    }
+
+    .card:hover {
+      transform: scale(1.04) translateY(-2px);
+      box-shadow: 0 16px 40px rgba(30, 41, 59, 0.32), 0 3px 12px rgba(0, 0, 0, 0.18);
+    }
+
+    .card h3 {
+      margin: 0 0 8px 0;
+      color: #5C6AC4;
+    }
+
+    .card a {
+      color: #3b82f6;
+      text-decoration: underline;
+      font-weight: bold;
+    }
+    .card iframe {
+      width:90%;
+      height:900px;
+    }
+    .searchContent {
+      background: linear-gradient(#7AFCFF, #AF19FF);
+      padding: 4px 5px 7px;
+      
+    }
+    .searchInput {
+      margin:1px 1px 1px;
+    }
+
+    .sidebar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 220px;
+      height: 100vh;
+      background: linear-gradient(135deg, #AE6DCF57 0%, #2A61B936 100%);
+      box-shadow: 2px 0 14px rgba(102, 174, 183, 0.43);
+      border-radius: 0 18px 18px 0;
+      padding: 24px 0;
+      z-index: 20;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      transform: translateX(-100%);
+      transition: transform 0.5s;
+    }
+
+    .sidebar.active {
+      transform: translateX(0);
+    }
+
+    .sidebar-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.2);
+      z-index: 19;
+      display: none;
+    }
+
+    .sidebar-overlay.active {
+      display: block;
+    }
+
+    .open-sidebar-btn {
+      position: fixed;
+      top: 16px;
+      left: 16px;
+      z-index: 30;
+      width:70px;
+    }
+
+    .close-btn {
+      background: none;
+      border: none;
+      font-size: 1.6em;
+      cursor: pointer;
+      align-self: flex-end;
+      margin-right: 14px;
+    }
+
+    </style>
+</head>
+<body class="flex flex-col h-screen">
+
+  <script>
+    // Actualiza la hora
+    function showTime() {
+      document.getElementById('currentTime').textContent = new Date().toLocaleTimeString();
+    }
+    setInterval(showTime, 1000); showTime();
+
+    // Sidebar
+    function openSidebar() {
+      document.getElementById('sidebar').classList.add('active');
+      document.getElementById('sidebarOverlay').classList.add('active');
+    }
+    function closeSidebar() {
+      document.getElementById('sidebar').classList.remove('active');
+      document.getElementById('sidebarOverlay').classList.remove('active');
+    }
+
+    // Buscador básico
+    function searchContent() {
+      var input = document.getElementById('searchInput').value.toLowerCase();
+      var cards = document.querySelectorAll('.card');
+      cards.forEach(function (card) {
+        card.style.display = card.textContent.toLowerCase().includes(input) ? '' : 'none';
+      });
+    }
+  </script>
+  <span>
+<!-- BOTON Y FUNCIONES -->
+  <div class="sidebar-overlay" id="sidebarOverlay" onclick="closeSidebar()"></div>
+     <button class="open-sidebar-btn" onclick="openSidebar()" style="width:80; height: 50;">☰</button>
+  <nav class="sidebar" id="sidebar">
+    <button class="close-btn" onclick="closeSidebar()" style="top:100px">×</button>
+    <a href="index.html">index</a>
+    <a href="index2.html">index2</a>
+    <a href="index3.html">index3</a>
+    <a href="config.html">⚙️ Configuración</a>
+    
+      
+      <button class="menu-btn" id="todosBtn">Todos</button>
+      <button class="menu-btn" id="motosBtn">Motos</button>
+      <button class="menu-btn" id="autosBtn">Autos</button>
+      <button class="login-btn" id="loginMenuBtn">Login</button>
+      <button class="logout-btn hidden" id="logoutMenuBtn">Salir</button>
+    </div>
+    </div>
+    
+  </nav>
+  <div class="navbar">
+    <span style="font-weight:bold;">Prof</span>
+<span>
+      <input type="text" id="searchInput" placeholder="Buscar...">
+      <button onclick="searchContent()">Buscar</button>
+    </span>
+    <ul> <span>
+ <button class="menu-btn" onclick="window.location='index.html'">Todos</button>
+   <!--   <button class="menu-btn" onclick="window.location='Projects.html'">Proyectos</button>
+      
+      <button class="menu-btn" onclick="window.location='alumn.html'">Alumnos</button>
+      <button class="menu-btn" onclick="window.location='config.html'">⚙️ Configuración</button>
+      -->
+    </span>
+  
+  </div>
+</span>
+
+  <span>
+    <!-- Desktop: Layout de 3 columnas -->
+    <div class="hidden md:grid md:grid-cols-[280px_1fr_280px] h-full">
+        <aside class="w-full bg-gray-800 text-white p-6 shadow-lg">
+            <h2 class="text-xl font-bold mb-4">Menú Izquierdo</h2>
+            <p class="text-gray-400">Contenido del menú de navegación. Puedes poner aquí los enlaces, botones y cualquier otro control.</p>
+        </aside>
+
+        <main class="w-full h-full p-8 overflow-y-auto">
+            <div class="max-w-4xl mx-auto">
+                <h1 class="text-3xl font-bold mb-4">Contenido Principal</h1>
+                <p class="text-gray-700 leading-relaxed mb-4">Este es el área central de tu aplicación. Es aquí donde el usuario verá toda la información importante, como gráficos, reportes, formularios o cualquier otro dato. El layout está diseñado para que este contenido sea el foco principal de la página, sin importar si estás en un teléfono o una computadora.</p>
+                <p class="text-gray-700 leading-relaxed">En un ordenador, los menús laterales siempre estarán visibles. La estructura se adapta con el zoom para que siempre veas la vista completa de la aplicación, sin necesidad de desplazarte, tal y como lo habías solicitado.</p>
+                <div class="mt-8 h-[1200px] bg-white rounded-lg shadow-md p-6 flex items-center justify-center">
+                    <p class="text-gray-500 text-center">Aquí va el contenido de tu aplicación.</p>
+                </div>
+            </div>
+        </main>
+</span>
+
+
+      
+        <aside class="w-full bg-gray-200 p-6 shadow-lg">
+            <h2 class="text-xl font-bold mb-4">Menú Derecho</h2>
+            <p class="text-gray-600">Este es un menú lateral para información complementaria, notificaciones, o un panel de control rápido. En el diseño para móvil, este menú y el de la izquierda se pueden deslizar para verlos completos.</p>
+
+
+            <p> 
+            ¿por qué los programadores tienen el mismo o incluso mucho más valor económico que un abogado?
+                El profesionalismo y la ética de un programador como cualquier otro profesión se basa en reglas principios normas que siempre hay que seguir en el momento en el que un programador captura informáticamente a código situaciones de la vida real o cómo resolver problemas reales, debido a que involucra no solamente matemáticas álgebra e incluso más allá de la filosofía, captura mucho más que solo los datos, debido a los principios de acuerdos de privacidad en las leyes en la mayoría de los países hay que estar de acuerdo en proteger las identidades y la privacidad de cada persona porque incluso pues el tener absolutamente la mayor parte de la población humana Es evidente la responsabilidad de tener a cada persona bajo tu responsabilidad en una empresa, mientras que un psicólogo o un abogado tienen que tener esta ética moral y sentido de justicia para proteger la información de cada individuo, debido a esto el no solo contratar los servicios de un programador en informática incluso te lleva a involucrar datos tanto de derecho filosofía matemática álgebra ciencia química y cualquier tipo de tema de suma importancia te lleva a aprender de todo.
+          
+            </p>
+        </aside>
+    </div>
+
+    <!-- Mobile: Layout de 3 paneles con scroll horizontal -->
+    <div id="mobile-layout" class="md:hidden w-screen h-full flex flex-row flex-nowrap scroll-container">
+        <div id="left-aside" class="scroll-item w-[80vw] bg-gray-800 text-white p-6 flex-shrink-0">
+            <h2 class="text-xl font-bold mb-4">Menú Izquierdo</h2>
+            <p class="text-gray-400">Contenido del menú de navegación. Desliza para regresar al centro.</p>
+        </div>
+
+        <main id="main-content" class="scroll-item w-screen p-8 overflow-y-auto flex-shrink-0">
+            <h1 class="text-3xl font-bold mb-4">Contenido Principal</h1>
+            <p class="text-gray-700 leading-relaxed mb-4">Este es el área central de tu aplicación. En el móvil, ocupa la pantalla completa. Para ver los menús laterales, simplemente desliza la pantalla hacia la izquierda o la derecha.</p>
+            <p class="text-gray-700 leading-relaxed">Los paneles laterales estarán ligeramente "aplastados" en los bordes, indicando que hay más contenido que puedes explorar con un simple gesto. En los móviles, esta es la forma más intuitiva de navegar por menús ocultos.</p>
+             <div class="mt-8 h-[1200px] bg-white rounded-lg shadow-md p-6 flex items-center justify-center">
+                 
+             
+                
+                
+                <iframe src="cards-main.html" style="width: 100%; height:720px" ></iframe>
+                
+             <!--   <p class="text-gray-500 /* text-center*/; top: 0; ">Aquí va el contenido de tu aplicación.</p> -->
+                
+            </div>
+        </main>
+        
+        <div id="right-aside" class="scroll-item w-[80vw] bg-gray-200 p-6 flex-shrink-0">
+            <h2 class="text-xl font-bold mb-4">Menú Derecho</h2>
+            <p class="text-gray-600">
+                <!--Contenido para el menú derecho. Desliza para regresar al centro.-->
+                            por qué los programadores tienen el mismo o incluso mucho más valor 
+                económico que un abogado:
+            el el profesionalismo y la ética de un programador como cualquier otro profesión se basa en reglas principios normas que siempre hay que seguir en el momento en el que un programador captura informáticamente a código situaciones de la vida real o cómo resolver problemas reales, debido a que involucra no solamente matemáticas álgebra e incluso más allá de la filosofía, captura mucho más que solo los datos, debido a los principios de acuerdos de privacidad en las leyes en la mayoría de los países hay que estar de acuerdo en proteger las identidades y la privacidad de cada persona porque incluso pues el tener absolutamente la mayor parte de la población humana Es evidente la responsabilidad de tener a cada persona bajo tu responsabilidad en una empresa, mientras que un psicólogo o un abogado tienen que tener esta ética moral y sentido de justicia para proteger la información de cada individuo, debido a esto el no solo contratar los servicios de un programador en informática incluso te lleva a involucrar datos tanto de derecho filosofía matemática álgebra ciencia química y cualquier tipo de tema de suma importancia te lleva a aprender de todo.
+            </p>
+            </p>
+            <iframe src="right-cards.html" style="height: 720px;"></iframe>
+        </div>
+    </div>
+
+    <script>
+        const scrollContainer = document.querySelector('.scroll-container');
+        const mainContent = document.getElementById('main-content');
+        
+        if (scrollContainer) {
+            window.onload = () => {
+                scrollContainer.scrollLeft = mainContent.offsetLeft;
+            };
+        }
+    </script>
+</body>
+</html>
