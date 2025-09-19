@@ -15,21 +15,26 @@
 <style>
   /* ====== RESET Y BASE ====== */
   * { box-sizing: border-box; margin: 0; padding: 0; }
-  html, body { height: 100%; font-family: sans-serif; background: pink; }
+  html, body { height: 100%; font-family: sans-serif; background: auto; }
 
   /* ====== LAYOUT DESKTOP ====== */
   .layout {
     display: grid;
     grid-template-columns: 30% 1.0fr 30%;
     height: 90vh;
-
+border-color: black;
+color-border: black;
   }
   aside, main {
     overflow-y: auto;
     padding: 10px;
+border-color: black;
+color-border: black;
   }
-  aside { background: #e5e7eb; }
-  main  {  background: #fff; }
+  aside { background: white; border-color: black;
+color-border: black; }
+  main  {  background: white; border-color: black;
+color-border: black;}
 
   /* ====== NAVBAR SUPERIOR ====== */
   .navbar {
@@ -43,6 +48,8 @@
     justify-content: space-between;
     padding: 0 15px;
     z-index: 1000;
+border-color: black;
+color-border: black;
   }
   .navbar h1 { font-size: 1.2rem; }
   .navbar button {
@@ -58,10 +65,12 @@
 background: gray;
 padding: 20px, 20px, 20px, 20px;
  top: 30px;
- margin: 5px ;
+ margin: 5px; border-color: black;
+color-border: black;
 }
 img { 
-max-width: 70%; height: 480px; transform: escale(0.3); max-escale: 0.7;
+max-width: 70%; height: 480px; transform: escale(0.3); max-escale: 0.7;border-color: black;
+color-border: black;
 }
 
   /* ====== MOBILE ====== */
@@ -72,6 +81,8 @@ max-width: 70%; height: 480px; transform: escale(0.3); max-escale: 0.7;
     }
     aside {
       display: none; /* ocultar sidebars por defecto */
+border-color: black;
+color-border: black;
     }
     aside.active {
       display: block;
@@ -92,10 +103,10 @@ max-width: 70%; height: 480px; transform: escale(0.3); max-escale: 0.7;
     border: none;
     background: white;
   }
-img { max-width: 70%; height: 480px; transform: escale(0.7);max-escale: 80vh
+img { max-width: 70%; height: 480px; transform: escale(0.7);max-escale: 0.7;
 }
 </style>
-<!--
+
                                 <style>
   /* ====== RESET Y BASE ====== */
   * { box-sizing: border-box; margin: 0; padding: 0; }
