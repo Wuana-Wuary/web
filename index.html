@@ -119,10 +119,12 @@ img { max-width: 70%; height: 480px; transform: escale(0.7);max-escale: 0.7;
     display: grid;
     grid-template-columns: 25% 1fr 25%;
     height: 100vh;
+    font-family: sans-serif;
   }
   aside, main {
     overflow-y: auto;
     padding: 10px;
+    font-family: sans-serif;
   }
   aside { background: #e5e7eb; }
   main { background: #fff; }
@@ -132,29 +134,47 @@ img { max-width: 70%; height: 480px; transform: escale(0.7);max-escale: 0.7;
     position: fixed;
     top: 0; left: 0; right: 0;
     height: 6vh;
-    background: linear-gradient(190deg, skyblue, white);
-    color: white;
+    background: linear-gradient(190deg,  white);
+    color: black;
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 0 15px;
     z-index: 1000;
+    font-family: sans-serif;
   }
-  .navbar h1 { font-size: 1.2rem; }
+  .navbar h1 { font-size: 1.0rem; }
   .navbar button {
     background: rgba(255,255,255,0.2);
-    border: none;
+    border: solid black;
+    width: 10vh;
+    
     padding: 5px 10px;
-    color: white;
+    color: black;
+    cursor: pointer;
+    border-radius: 4px;
+    font-family: sans-serif;
+  }
+  
+  a {
+  	    padding: 5px 10px;
+    color: black;
     cursor: pointer;
     border-radius: 4px;
   }
-
+  
+  .card {     padding: 5px 10px;
+    color: black;
+    cursor: pointer;
+    border-radius: 4px;
+    /*
+  padding: 2px; top: 3px; margin: 5px ; width:100%" }
+*/
   /* ====== MOBILE ====== */
-  @media (max-width: 768px) {
+  @media (max-width: 900px) {
     .layout {
-      grid-template-columns: 1fr;
-      grid-template-rows: auto 1fr auto;
+      grid-template-columns: 1.2fr;
+      grid-template-rows: auto 2fr auto;
     }
     aside {
       display: none; /* ocultar sidebars por defecto */
@@ -187,24 +207,23 @@ img { max-width: 70%; height: 480px; transform: escale(0.7);max-escale: 0.7;
 <body>
 <!-- NAVBAR SUPERIOR -->
 <div class="navbar" escale="1.5">
-  <button onclick="toggleSidebar('left')"   style="width: 5vh; height: 3vh; " >☰</button>
-  <h1>Welcome to Wuana Wuary </h1>
-  <button onclick="toggleSidebar('right')"   style="  style="width: 5vh; height: 3vh; ">☰</button>
+  <button onclick="toggleSidebar('left')">☰</button>
+  <a href="index.html" style="color: black">Wuana Wuary </a>
+  <button onclick="toggleSidebar('right')" >☰</button>
 </div>
 
 <!-- LAYOUT PRINCIPAL -->
 <div class="layout" style="padding-top:70px;">
   <aside class="left">
-    <iframe src=""></iframe>
+  <!--  <iframe src=""></iframe>
+-->
 
-
-     
   </aside>
   <main>
 <h1>Welcome</h1>
-                  <h3>This page is to know energy </h3>
+ <h3>This page is to feel energy </h3>
 
-<div class="card" style=" padding: 20px, 20px, 20px, 20px; top: 30px; margin: 5px ;  >
+<div class="card">
      <img src="1757819056786.jpg"/>
      </div>
     <!--
@@ -223,15 +242,15 @@ img { max-width: 70%; height: 480px; transform: escale(0.7);max-escale: 0.7;
  </div>
 
    <div class="card">
- <img src="1757819070577.jpg" style=" padding: 20px, 20px, 20px, 20px; top: 30px; margin: 5px ;"   />
+ <img src="1757819070577.jpg"    />
    </div>
  
  <div class="card">
- <img src="1757819072896.jpg"style=" padding: 20px, 20px, 20px, 20px; top: 30px; margin: 5px ;"  />
+ <img src="1757819072896.jpg"/>
  </div>
  
  <div class="card">
- <img src="1757819074452.jpg" style=" padding: 20px, 20px, 20px, 20px; top: 30px; margin: 5px ;"  />
+ <img src="1757819074452.jpg"   />
  </div>
 
 
@@ -259,3 +278,4 @@ img { max-width: 70%; height: 480px; transform: escale(0.7);max-escale: 0.7;
 
 </body>
 </html>
+<!--
