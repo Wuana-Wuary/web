@@ -1,0 +1,290 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=0.8">
+<title>Wuana Wuary Profile</title>
+
+
+<style>
+  /* ====== RESET Y BASE ====== */
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { height: 100%; font-family: sans-serif; background: auto; }
+
+  /* ====== LAYOUT DESKTOP ====== */
+  .layout {
+    display: grid;
+    grid-template-columns: 30% 1.0fr 30%;
+    height: 90vh;
+border: 6px black;
+
+  }
+  aside, main {
+    overflow-y: auto;
+    padding: 10px;
+border: 4px black;
+
+  }
+  aside { background: white; border: black;
+color: black; }
+  main  {  background: white; border: 3px black; 
+}
+
+  /* ====== NAVBAR SUPERIOR ====== */
+  .navbar {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    height: 4vh;
+    background: white;
+    color: black;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 15px;
+    z-index: 1000;
+border-color: black;
+  }
+  .navbar h1 { font-size: 1.2rem; }
+  .navbar button {
+/*
+    background: rgba(255,255,255,0.7);
+*/
+background: black;
+    border: 4px;
+    padding: 5px 3px;
+    color: white;
+    cursor: pointer;
+    border-radius: 4px;
+  }
+
+.card {
+background: gray;
+padding: 20px, 20px, 20px, 20px;
+ top: 30px;
+ margin: 5px; border-color: black;
+color-border: black;
+}
+img { 
+max-width: 70%; height: 480px; transform: escale(0.3); max-escale: 0.7;border-color: black;
+color-border: black;
+}
+
+  /* ====== MOBILE ====== */
+  @media (max-width: 768px) {
+    .layout {
+      grid-template-columns: 1fr;
+      grid-template-rows: auto 1fr auto;
+    }
+    aside {
+      display: none; /* ocultar sidebars por defecto */
+border-color: black;
+color-border: black;
+    }
+    aside.active {
+      display: block;
+      position: fixed;
+      top: 50px;
+      bottom: 0;
+      width: 80%;
+      z-index: 999;
+    }
+    aside.left { left: 0; }
+    aside.right { right: 0; }
+  }
+
+  /* ====== IFRAMES ====== */
+  iframe {
+    width: 100%;
+    height: calc(100vh - 70px);
+    border: none;
+    background: white;
+  }
+img { max-width: 70%; height: 480px; transform: escale(0.7);max-escale: 0.7;
+}
+</style>
+
+                                <style>
+  /* ====== RESET Y BASE ====== */
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { height: 100%; font-family: sans-serif; background: #f3f4f6; }
+
+  /* ====== LAYOUT DESKTOP ====== */
+  .layout {
+    display: grid;
+    grid-template-columns: 25% 1fr 25%;
+    height: 100vh;
+    font-family: sans-serif;
+  }
+  aside, main {
+    overflow-y: auto;
+    padding: 10px;
+    font-family: sans-serif;
+  }
+  aside { background: #e5e7eb; }
+  main { background: #fff; }
+
+  /* ====== NAVBAR SUPERIOR ====== */
+  .navbar {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    height: 6vh;
+    background: linear-gradient(190deg,  white);
+    color: black;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 15px;
+    z-index: 1000;
+    font-family: sans-serif;
+  }
+  .navbar h1 { font-size: 1.0rem; }
+  .navbar button {
+    background: rgba(255,255,255,0.2);
+    border: solid black;
+    width: 10vh;
+    
+    padding: 5px 10px;
+    color: black;
+    cursor: pointer;
+    border-radius: 4px;
+    font-family: sans-serif;
+  }
+  
+  a {
+  	    padding: 5px 10px;
+    color: black;
+    cursor: pointer;
+    border-radius: 4px;
+  }
+  
+  img , iframe , main {     padding: 5px 10px;
+    color: black;
+     border-radius: 4px;
+    /* overflow-y: auto;*/
+ width: 100vh;
+    /*
+  padding: 2px; top: 3px; margin: 5px ; width:100%" }
+*/
+  /* ====== MOBILE ====== */
+  @media (max-width: 900px ) {
+    .layout {
+      grid-template-columns: 1.2fr;
+      grid-template-rows: auto 2fr auto;
+    }
+    aside {
+      display: none; /* ocultar sidebars por defecto */
+    }
+    aside.active {
+      display: block;
+      position: fixed;
+      top: 50px;
+      bottom: 4px;
+      width: 80%;
+      z-index: 999;
+    }
+    aside.left { left: 0; }
+    aside.right { right: 0; }
+  }
+main {
+	width: 800px;
+	 overflow-y: auto;
+ padding: 10px;
+}
+
+  /* ====== IFRAMES ====== */
+  iframe {
+    width: 100%;
+    height: calc(100vh - 70px);
+    border: black;
+    background: ;
+  }
+}
+</style>
+
+</head>
+
+<!--BODYY -->
+<body>
+<!-- NAVBAR SUPERIOR -->
+<div class="navbar" escale="1.5">
+  <button onclick="toggleSidebar('left')">☰</button>
+  <a href="index.html" style="color: black">Wuana Wuary </a>
+  <button onclick="toggleSidebar('right')" >☰</button>
+</div>
+
+<!-- LAYOUT PRINCIPAL -->
+<div class="layout" style="padding-top:70px;">
+  <aside class="left">
+  <!--  <iframe src=""></iframe>
+-->
+
+  </aside>
+  <main>
+<!--
+<h2>Welcome</h2>
+ <h3>This page is to feel energy </h3>
+
+<!--
+
+<div class="card">
+     <img src="1757819056786.jpg"/>
+     </div>
+    <!--
+     <img src="1757819056786.jpg" style=" padding: 20px, 20px, 20px, 20px; top: 30px; margin: 5px ;"   />
+    --> 
+       <div class="card">
+ <img src="/1757819058958.jpg"  />
+ </div>
+ 
+ <div class="card">
+ <img src="1757819064823.jpg" style=" padding: 20px, 20px, 20px, 20px; top: 30px; margin: 5px;" />
+ </div>
+ 
+ <div class="card">
+ <img src="1757819067254.jpg"/>
+
+   <div class="card">
+ <img src="1757819070577.jpg"/>
+   </div>
+ 
+ <div class="card">
+ <img src="1757819072896.jpg"/>
+ </div>
+ 
+ <div class="card">
+ <img src="1757819074452.jpg"   />
+ </div>
+
+-->
+
+
+  </main>
+  <aside class="right">
+
+<iframe src=""></iframe>
+  </aside>
+</div>
+<script>
+  // Lógica para mostrar/ocultar sidebars en móvil
+  function toggleSidebar(side) {
+    const aside = document.querySelector(`aside.${side}`);
+    aside.classList.toggle('active');
+  }
+
+  // Centrar contenido aunque haya zoom
+  window.addEventListener('resize', centerLayout);
+  window.addEventListener('load', centerLayout);
+  function centerLayout() {
+    document.body.style.display = 'flex';
+    document.body.style.justifyContent = 'center';
+  }
+</script>
+
+</body>
+</html>
