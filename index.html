@@ -1,0 +1,270 @@
+### index.html (página principal — lista de teasers, perfil, galería y contacto)
+
+```html
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Portal Esotérico · Inicio</title>
+<meta name="description" content="Astrología, tarot y vibras — teasers, perfil y contacto.">
+<style>
+  :root{
+    --bg:#0b0614; --card:#0f1220; --muted:#98a3bf;
+    --accent:#6d28d9; --accent-2:#fbbf24; --radius:12px;
+    --container:1100px;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:Inter,system-ui,Arial;background:linear-gradient(180deg,#07060a 0%, #0b0614 100%);color:#eef3ff;line-height:1.45}
+  .container{max-width:var(--container);margin:0 auto;padding:20px}
+  header{display:flex;justify-content:space-between;align-items:center;gap:18px;padding:18px 0}
+  .brand{display:flex;gap:12px;align-items:center}
+  .logo{width:64px;height:64px;border-radius:12px;object-fit:cover;border:2px solid rgba(255,255,255,0.06)}
+  nav a{color:var(--muted);text-decoration:none;margin-left:12px;font-size:15px}
+  .cover{border-radius:14px;overflow:hidden;background-size:cover;background-position:center;padding:30px 20px;margin-bottom:18px;display:flex;gap:20px;align-items:center}
+  .cover-text h1{margin:0;font-size:26px}
+  .cover-text p{margin:8px 0;color:var(--muted)}
+  .avatar{width:110px;height:110px;border-radius:14px;object-fit:cover;border:3px solid rgba(255,255,255,0.06)}
+  main{display:grid;grid-template-columns:2fr 360px;gap:18px}
+  .card{background:var(--card);padding:16px;border-radius:12px;box-shadow:0 8px 20px rgba(2,6,23,0.6)}
+  .muted{color:var(--muted)}
+  .feed-item{display:flex;gap:12px;align-items:flex-start;padding:10px 0;border-bottom:1px solid rgba(255,255,255,0.02)}
+  .thumb{width:120px;height:80px;object-fit:cover;border-radius:8px;flex-shrink:0}
+  .thumb.small{width:80px;height:60px}
+  .teaser h3{margin:0 0 6px 0}
+  .teaser p{margin:0;color:var(--muted)}
+  .btn{background:linear-gradient(90deg,var(--accent),#4c1d95);color:white;padding:8px 12px;border-radius:10px;border:0;cursor:pointer;text-decoration:none}
+  .profile{display:flex;gap:12px;align-items:center}
+  .meta{font-size:13px;color:var(--muted);margin-top:8px}
+  .gallery{display:flex;gap:8px;margin-top:12px}
+  .gallery img{width:calc(33% - 6px);height:100px;object-fit:cover;border-radius:8px}
+  form label{display:block;margin:8px 0;font-size:14px}
+  input,textarea{width:100%;padding:8px;border-radius:8px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:inherit}
+  footer{padding:18px 0;color:var(--muted);text-align:center;margin-top:18px}
+  @media(max-width:980px){ main{grid-template-columns:1fr} .gallery img{height:84px} }
+</style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="brand">
+        <img class="logo" src="https://github.com/wuana-wuary.png?size=200" alt="logo org">
+        <div>
+          <div style="font-weight:700">Portal Esotérico</div>
+          <div class="muted" style="font-size:13px">Astrología · Tarot · Vibras</div>
+        </div>
+      </div>
+
+      <nav>
+        <a href="#feed">Feed</a>
+        <a href="#profile">Profile</a>
+        <a href="#galeria">Galería</a>
+        <a href="#contacto" class="btn">Contacto</a>
+      </nav>
+    </header>
+
+    <section class="cover" style="background-image:url('https://wuana-wuary.github.io/web/1757819074452.jpg')">
+      <img class="avatar" src="https://github.com/wuana-wuary.png?size=240" alt="Avatar público de GitHub">
+      <div class="cover-text">
+        <h1>Lecturas, guías y vibras</h1>
+        <p class="muted">Breves reflexiones sobre astrología, tarot y prácticas para equilibrar tu energía.</p>
+        <div style="margin-top:8px"><a class="btn" href="#feed">Explorar artículos</a></div>
+      </div>
+    </section>
+
+    <main>
+      <section>
+        <div id="feed" class="card">
+          <h2 style="margin-top:0">Feed — artículos recientes</h2>
+
+          <!-- Teaser 1 -->
+          <article class="feed-item">
+            <img class="thumb" src="https://wuana-wuary.github.io/web/1757819056786.jpg" alt="colores">
+            <div class="teaser">
+              <h3>Significado esotérico de los colores</h3>
+              <p class="muted">Los colores vibran y afectan emociones; una guía rápida por tonos y usos esotéricos.</p>
+              <div style="margin-top:8px">
+                <a class="btn" href="/posts/significado-colores.html">Leer artículo</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Teaser 2 -->
+          <article class="feed-item">
+            <img class="thumb" src="https://wuana-wuary.github.io/web/1757819064823.jpg" alt="tarot">
+            <div class="teaser">
+              <h3>Tarot práctico: 3 cartas</h3>
+              <p class="muted">Una tirada de tres cartas para decidir frente a un bloqueo personal.</p>
+              <div style="margin-top:8px">
+                <a class="btn" href="/posts/tarot-3-cartas.html">Leer artículo</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Teaser 3 -->
+          <article class="feed-item">
+            <img class="thumb" src="https://wuana-wuary.github.io/web/1757819067254.jpg" alt="astrologia">
+            <div class="teaser">
+              <h3>Astrología breve: tránsitos hoy</h3>
+              <p class="muted">Qué significa el tránsito de hoy y cómo aprovecharlo en decisiones prácticas.</p>
+              <div style="margin-top:8px">
+                <a class="btn" href="/posts/transitos-hoy.html">Leer artículo</a>
+              </div>
+            </div>
+          </article>
+
+        </div>
+
+        <div id="galeria" class="card" style="margin-top:14px">
+          <h3>Galería</h3>
+          <p class="muted">Imágenes públicas tomadas del repo web.</p>
+          <div class="gallery">
+            <img src="https://wuana-wuary.github.io/web/1757819058958.jpg" alt="gal1">
+            <img src="https://wuana-wuary.github.io/web/1757819070577.jpg" alt="gal2">
+            <img src="https://wuana-wuary.github.io/web/1757819072896.jpg" alt="gal3">
+          </div>
+        </div>
+      </section>
+
+      <aside>
+        <div id="profile" class="card">
+          <h3>Perfil profesional</h3>
+          <div class="profile">
+            <img class="avatar" src="https://github.com/wuana-wuary.png?size=200" alt="avatar">
+            <div>
+              <div style="font-weight:700">Wuana Wuary</div>
+              <div class="muted">Lectora de tarot · Astróloga · Guía energética</div>
+              <div class="meta">Consultas por cita; ética y confidencialidad</div>
+            </div>
+          </div>
+
+          <div style="margin-top:12px">
+            <strong>Servicios</strong>
+            <ul class="muted" style="padding-left:18px;margin:8px 0 0 0">
+              <li>Tirada rápida (3 cartas)</li>
+              <li>Carta natal interpretativa</li>
+              <li>Sesiones de alineación energética</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="card" style="margin-top:12px">
+          <h4>Contacto rápido</h4>
+          <p class="muted">Formularios sin servidor — enviamos al correo configurado en el servicio</p>
+          <form id="contactForm" action="https://formspree.io/f/your-form-id" method="POST">
+            <label>Nombre<input name="name" required></label>
+            <label>Email<input type="email" name="email" required></label>
+            <label>Mensaje<textarea name="message" rows="3" required></textarea></label>
+            <button class="btn" type="submit">Enviar</button>
+          </form>
+        </div>
+
+        <div class="card" style="margin-top:12px">
+          <h4>Mini bio</h4>
+          <p class="muted">Con más de años de experiencia en lecturas y trabajo energético, ofrezco guías para procesos personales y decisiones conscientes.</p>
+        </div>
+      </aside>
+    </main>
+
+    <footer>
+      <div class="muted">© <span id="year"></span> Portal Esotérico · Creado con intención · Imágenes públicas del repo web</div>
+    </footer>
+  </div>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+  // Si no quieres usar Formspree, cambia action por el endpoint que prefieras.
+  // Para usar el avatar público de la org: https://github.com/wuana-wuary.png?size=200
+</script>
+</body>
+</html>
+
+
+<!---
+### posts/significado-colores.html (post completo, formateado y limpio)
+
+```html---->
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Significado esotérico de los colores</title>
+<meta name="description" content="Guía: significado esotérico de los colores y cómo influyen en tus vibras.">
+<style>
+  body{font-family:Inter,system-ui,Arial;background:#0b0614;color:#eef3ff;margin:0;padding:18px}
+  .container{max-width:900px;margin:0 auto}
+  .card{background:#0f1220;padding:18px;border-radius:12px}
+  h1{margin-top:0}
+  .muted{color:#98a3bf}
+  ul{padding-left:18px}
+  .back{display:inline-block;margin-top:12px;color:#cbd5e1;text-decoration:none}
+  img.header{width:100%;height:300px;object-fit:cover;border-radius:10px;margin-bottom:12px}
+  @media(max-width:640px){ img.header{height:180px} }
+</style>
+</head>
+<body>
+  <div class="container">
+    <a class="back" href="/index.html">← Volver</a>
+    <div class="card" style="margin-top:12px">
+      <img class="header" src="https://wuana-wuary.github.io/web/1757819056786.jpg" alt="colores espirituales">
+      <h1>Significado esotérico de los colores</h1>
+      <p class="muted">Visitas: 11.909 · Extracto: Los colores vibran y pueden aportar energías que influyen en ánimo y decisiones.</p>
+
+      <article style="margin-top:12px;color:#e6eef8">
+        <p>Los colores siempre nos han atraído; todos tenemos un color favorito con el que nos identificamos. En esoterismo los tonos poseen vibraciones que influyen en el cuerpo, la mente y el espíritu. La cromoterapia usa esos matices para equilibrar energías y mejorar estados emocionales.</p>
+
+        <h2>La vibración de los colores</h2>
+        <p>Es un hecho que los colores vibran. Pueden aportar vibraciones positivas o negativas; por eso afectan emociones, conducta y claridad mental. Observa cómo cambian las estaciones: cada paleta genera una resonancia distinta en nosotros.</p>
+
+        <h2>Significados por color (resumen)</h2>
+        <ul>
+          <li><strong>Amarillo:</strong> luz, alegría, prosperidad; favorece la intuición y el avance intelectual.</li>
+          <li><strong>Azul claro:</strong> curación, conexión con lo espiritual.</li>
+          <li><strong>Azul oscuro:</strong> trabajo con el subconsciente y la sanación profunda.</li>
+          <li><strong>Rojo:</strong> pasión, fuerza y vitalidad; también puede intensificar la agresividad.</li>
+          <li><strong>Verde:</strong> naturaleza, salud y renovación; asociado a suerte y prosperidad.</li>
+          <li><strong>Naranja:</strong> vitalidad y adaptación; propicia la unión en grupos.</li>
+          <li><strong>Turquesa:</strong> desarrollo espiritual y claridad mental.</li>
+          <li><strong>Marrón:</strong> estabilidad, labores con la tierra y hogar.</li>
+          <li><strong>Rosa:</strong> ternura, amistad y suavizado de emociones negativas.</li>
+          <li><strong>Violeta:</strong> espiritualidad, transmutación y meditación.</li>
+          <li><strong>Dorado:</strong> perfección mística y estados de iluminación.</li>
+          <li><strong>Gris:</strong> neutralidad y equilibrio; útil en trabajos de justicia.</li>
+          <li><strong>Blanco:</strong> protección, paz y pureza.</li>
+          <li><strong>Negro:</strong> absorción y eliminación de energías negativas.</li>
+        </ul>
+
+        <h2>Colores por día</h2>
+        <p class="muted">Elegir un color según el día puede reforzar ciertas energías:</p>
+        <ul>
+          <li>Lunes: verde, blanco y plateado (Luna)</li>
+          <li>Martes: rojo (Marte)</li>
+          <li>Miércoles: gris metalizado (Mercurio)</li>
+          <li>Jueves: azul (Júpiter)</li>
+          <li>Viernes: tonos cobrizos (Venus)</li>
+          <li>Sábado: negro (Saturno)</li>
+          <li>Domingo: amarillo intenso (Sol)</li>
+        </ul>
+
+        <h2>Aplicaciones prácticas</h2>
+        <p>Usa verdes y azules para calma; rojos, naranjas y amarillos para energía y motivación. Si buscas un cambio positivo, combina amarillo y turquesa para claridad y apertura.</p>
+
+        <p class="muted" style="margin-top:12px">Fuentes y lecturas: textos y guías públicas sobre cromoterapia y esoterismo (resumen adaptado para este portal).</p>
+      </article>
+
+      <a class="back" href="/index.html">← Volver</a>
+    </div>
+  </div>
+</body>
+</html>
+
+
+---
+
+Si quieres, lo siguiente que puedo entregarte ahora mismo sin más trabajo manual:
+- posts/tarot-3-cartas.html y posts/transitos-hoy.html (dos posts breves para completar los links del index).  
+- Un feed.json minimal para listar automáticamente los teasers.  
+- Instrucciones para usar Formspree (cómo obtener tu form-id) o alternativa EmailJS para enviar formularios a tu correo sin backend.
+
+Dime cuál de las tres opciones quieres y lo preparo listo para pegar.
